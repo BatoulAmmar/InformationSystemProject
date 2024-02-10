@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>CIS Innovation Hub</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0" >
+        <a href="index2.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h2 class="m-0 text-primary"><img src="img/cislogo.jpg" alt="CIS Logo" height="75" class="me-3">CIS Innovation Hub</h2>
+            </a>
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index2.html" class="nav-item nav-link active">Home</a>
+                <a href="#" class="nav-item nav-link">About</a>
+                <a href="createcourse.html" class="nav-item nav-link"> Create Courses</a>
+                <a href="editcourse.html" class="nav-item nav-link">Update Courses</a>
+                <a href="Financialissues.html" class="nav-item nav-link">Financial Issues</a>
+                <a href="internmanage.html" class="nav-item nav-link">Intern Management</a>
+                <a href="scheduletask.html" class="nav-item nav-link">Task Schedule</a>
+                <a href="#" class="nav-item nav-link">Contact</a>
+            </div>
+            
+            </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Course Management Table Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Course Management</h6>
+                <h1 class="mb-5">Course List</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Course Title</th>
+                                <th scope="col">Course Description</th>
+                                <th scope="col">Course Image</th>
+                                <th scope="col">Course Price</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="courseTableBody">
+                            <!-- Table rows will be dynamically added here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Course Management Table End -->
+
+    <!-- Optional: Include any scripts you might need -->
+    <script src="js/main.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/footer.js"></script>
+    <!-- Template Javascript -->
+
+    <script>
+        // Sample data for demonstration
+        const courses = [
+            { image: "img/course-1.jpg", price: "$149.00", stars: "⭐⭐⭐⭐⭐", title: "Web Design & Development Course for Beginners",description: "Web Design & Development Course ", instructor: "Mohammad Kobeisy", duration: "140Hrs", students: 15 },
+            { image: "img/course-2.jpg", price: "$180.00", stars: "⭐⭐⭐⭐⭐", title: "Mobile Application Development using Flutter",description: "Mobile Application Development ", instructor: "Ali Saleh", duration: "50 Hrs", students: 20 },
+            { image: "img/Python-Logo.png", price: "$60.00", stars: "⭐⭐⭐⭐⭐", title: "The Complete Python Bootcamp From Zero to Hero in Python",description: "Python Bootcamp ", instructor: "Ali Saleh", duration: "30 Hrs", students: 50 },
+            { image: "img/java1655.logowik.com.webp", price: "$80.00", stars: "⭐⭐⭐⭐⭐", title: "Java Programming for Complete Beginners", description: "Java Programming ",instructor: "Anas Jaafar", duration: "40 Hrs", students: 25 },
+            { image: "img/logo-data-structure.png", price: "$100.00", stars: "⭐⭐⭐⭐⭐", title: "Data Structure and Algorithms Foundation",description: "Data Structure and Algorithms Course ", instructor: "Hussein Abbass", duration: "30 Hrs", students: 50 },
+        ];
+
+        // Function to populate the course table
+        function populateCourseTable() {
+            const tableBody = document.getElementById('courseTableBody');
+
+            // Clear existing rows
+            tableBody.innerHTML = '';
+
+            // Populate the table with courses
+            courses.forEach(course => {
+                const row = document.createElement('tr');
+
+                // Add course details to the row
+                row.innerHTML = `
+                    <td>${course.title}</td>
+                    <td>${course.description}</td>
+                    <td><img src="${course.image}" alt="${course.title}" style="max-width: 100px;"></td>
+                    <td>${course.price}</td>
+                    <td>
+                        <button class="btn btn-primary" onclick="updateCourse(${course.id})">Update</button>
+                        <br>
+                        <br>
+                        <button class="btn btn-danger" onclick="deleteCourse(${course.id})">Delete</button>
+                    </td>
+                `;
+
+                // Append the row to the table
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Sample function to handle updating a course
+        function updateCourse(courseId) {
+            // Implement your logic to handle updating a course
+            console.log(`Updating course with ID: ${courseId}`);
+        }
+
+        // Sample function to handle deleting a course
+        function deleteCourse(courseId) {
+            // Implement your logic to handle deleting a course
+            console.log(`Deleting course with ID: ${courseId}`);
+        }
+
+        // Call the function to populate the table
+        populateCourseTable();
+    </script>
+
+</body>
+
+</html>
+

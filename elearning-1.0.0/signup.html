@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://media.istockphoto.com/id/656622508/photo/businessman-holding-his-briefcase-in-office.jpg?s=612x612&w=0&k=20&c=WCoFjyszmg0vOTcrsYJqlgXDfcNT91FK2Rm4VouXnbM=');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.6;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        form {
+            background-color: rgba(255, 165, 0, 0.8); /* Orange color with opacity 0.8 */
+            border: 2px solid navy; /* Navy border */
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        form input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        form button {
+            background-color: navy;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        form span {
+            display: block;
+            margin-top: 8px;
+            text-align: center;
+        }
+
+        form span a {
+            color: navy;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <label for="fname"><b>First Name</b></label>
+        <input type="text" placeholder="Enter First Name" name="fname" required>
+
+        <label for="lname"><b>Last Name</b></label>
+        <input type="text" placeholder="Enter Last Name" name="lname" required>
+
+        <label for="email"><b>Email</b></label>
+        <input type="email" placeholder="Enter Email" name="email" required>
+
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required>
+
+        <button type="submit">Sign Up</button>
+        
+        <span>
+            Already have an account? <a href="login.html">Log in</a>
+        </span>
+    </form>
+</body>
+</html>
